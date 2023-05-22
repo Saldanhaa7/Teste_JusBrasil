@@ -31,7 +31,6 @@ class primeiraInstancia():
         for parte in partesprocesso.find_all("td"):
             nome = parte.text.strip().replace("\n", "").replace("\t", "").replace("\xa0", " ")
             nomes.append(nome)
-        print(nomes)
         movimentacoes = soup.find("tbody", id="tabelaTodasMovimentacoes")
         movimentacao = []
         for x in movimentacoes:
