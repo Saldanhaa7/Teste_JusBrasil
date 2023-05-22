@@ -62,6 +62,3 @@ class primeiraInstancia():
         soup = self.acessar_url(url)
         dados = self.extrair_dados(soup)
         return dados
-processo = '0710802-55.2018.8.02.0001'
-crawler = primeiraInstancia(processo)
-dados = crawler.buscar_dados()
