@@ -26,11 +26,12 @@ class primeiraInstancia():
         valor = soup.find("div", id="valorAcaoProcesso")
         if valor != None:
             valor = valor.text
-        partes = soup.find_all("td", class_="nomeParteEAdvogado")
+        partesprocesso = soup.find("table", id="tableTodasPartes")
         nomes = []
-        for parte in partes:
-            nome = parte.text.strip().replace("\n", "").replace("\t", "")
+        for parte in partesprocesso.find_all("td"):
+            nome = parte.text.strip().replace("\n", "").replace("\t", "").replace("\xa0", " ")
             nomes.append(nome)
+        print(nomes)
         movimentacoes = soup.find("tbody", id="tabelaTodasMovimentacoes")
         movimentacao = []
         for x in movimentacoes:
@@ -61,3 +62,6 @@ class primeiraInstancia():
         soup = self.acessar_url(url)
         dados = self.extrair_dados(soup)
         return dados
+processo = '0710802-55.2018.8.02.0001'
+crawler = primeiraInstancia(processo)
+dados = crawler.buscar_dados()
